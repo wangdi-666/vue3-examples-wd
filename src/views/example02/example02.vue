@@ -71,11 +71,21 @@ export default defineComponent({
   // 计算属性
   computed: {
     // TS类型声明在后面
+    // 不能把它写成箭头函数，因为箭头函数里面不能写this
     myDate(): string {
       // 把T换成空格
       return this.user.insertTime.replace("T", " ");
     },
     // 把字符串hello倒过来
+    // 1、split('') 把一个字符串分割成字符串数组
+    // 把数据拆分为一个数组,括号里的' '是把数据拆分为每个字符串
+    // 2、reverse() 颠倒数组中元素的顺序
+    // 只作用于数组，跟在split('')后才能起作用，
+    // 在一个字符串后面不起作用，如message.reverse()
+    // 3、join('') 把数组中的所有元素放入一个字符串
+    // 所以，message.split('').reverse().join('')
+    // 意思是把字符串翻转重组成字符串
+    // hello→olleh
     reversMessage(): string {
       return this.message
         .split("")
@@ -86,6 +96,11 @@ export default defineComponent({
     myReplace() {
       return (date: string) => date.replace("T", " ");
     }
+    // myReplace() {
+    //   return (date: string): string => {
+    //     return date.replace("T", " ");
+    //   };
+    // }
   },
   // 异步
   watch: {
