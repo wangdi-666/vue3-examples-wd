@@ -4,12 +4,12 @@
   </div>
 </template>
 <script lang="ts">
-// import { User } from "@/datasource/Types";
-// const user: User = {
-//   name: "wd",
-//   address: "999"
-// };
+import { User } from "@/datasource/Types";
+const user: User = {
+  name: "wd",
+  address: "999"
+};
+console.log(user.name);
 import { defineComponent } from "vue";
 export default defineComponent({});
 </script>
-z

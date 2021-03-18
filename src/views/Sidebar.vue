@@ -29,7 +29,36 @@
       <li>
         Composition-API
         <ul>
+          <li>
+            <router-link to="/example04-01">
+              interface & ref() & computed() & watch()
+            </router-link>
+          </li>
+          <li><router-link to="/example04-04">Composition</router-link></li>
           <li><router-link to="/example04-02">reactive()</router-link></li>
+          <li>
+            <!-- 路由传参 -->
+            <router-link to="/example04-03/students/45/homeworks/23">
+              students/45/homeworks/23
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example04-03/students/18/homeworks/18">
+              students/18/homeworks/18
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        directives
+        <ul>
+          <li>
+            <router-link to="/example05-01">template & if & v-bind</router-link>
+          </li>
+          <li>
+            <router-link to="/example05-02">v-bind & watch</router-link>
+          </li>
+          <li><router-link to="/example05-03">v-for</router-link></li>
         </ul>
       </li>
     </ul>
