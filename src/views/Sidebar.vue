@@ -61,6 +61,19 @@
           <li><router-link to="/example05-03">v-for</router-link></li>
         </ul>
       </li>
+      <li><router-link to="/example05-04">Async Component</router-link></li>
+      <li>
+        Form Input Bindings
+        <ul>
+          <li><router-link to="/example06-01">v-module</router-link></li>
+          <li><router-link to="/example06-02">Examples</router-link></li>
+        </ul>
+      </li>
+      <li>
+        <router-link to="/example06-03">
+          Homework - 1
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
