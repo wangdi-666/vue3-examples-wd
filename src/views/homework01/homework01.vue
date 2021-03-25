@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- 自己代码 -->
+    <!-- 老师代码 -->
     <h1>Homework01</h1>
     <p style="font-weight: bold">
       <span :style="{ color: point >= requiredPoint ? 'green' : 'red' }">
@@ -11,68 +11,50 @@
     <div class="course">
       <template v-for="(c, index) of courses" :key="index">
         <label>
-          <input type="checkbox" v-model="sCoursesRef" :value="c" />
+          <input type="checkbox" v-model="courseSelects" :value="c" />
           {{ c.name }} - {{ c.point }} ({{ c.term }})
         </label>
         <br />
       </template>
     </div>
     <div class="course">
-      <template v-for="(c, index) of sCoursesRef" :key="index">
+      <template v-for="(c, index) of courseSelects" :key="index">
         {{ c.name }} - {{ c.point }} ({{ c.term }})
         <br />
       </template>
     </div>
-    <p>
-      {{ sCoursesRef }}
-    </p>
   </div>
 </template>
-
 <script lang="ts">
-import { Course, listCourses } from "@/datasource/homework01";
-import { defineComponent, ref, computed } from "vue";
-
-// sort()函数
-// function NumAscSort(a,b)
-// {
-//  return a - b;
-// }
-// function NumDescSort(a,b)
-// {
-//  return b - a;
-// }
-// var arr = new Array( 3600, 5010, 10100, 801);
-// arr.sort(NumDescSort);
-// alert(arr);
-// arr.sort(NumAscSort);
-// alert(arr);
+import { listCourses, Course } from "@/datasource/homework01";
+import { computed, defineComponent, ref } from "vue";
 
 export default defineComponent({
   setup() {
-    const requiredPoint = 17.5;
-    // const c2 = listCourses().sort((a, b) => a.term - b.term);
-    // const courses = ref<Course[]>(c2);
-    const courses = listCourses();
-    const sCoursesRef = ref<Course[]>([]);
+    const requiredPoint = 12;
+    const c2 = listCourses().sort((a, b) => a.term - b.term);
+    const courses = ref<Course[]>(c2);
+    const courseSelects = ref<Course[]>([]);
     const point = computed(() => {
       let count = 0;
-      sCoursesRef.value.forEach(c => {
+      courseSelects.value.forEach(c => {
         count = count + c.point;
       });
-      // sCoursesRef.value.sort((a, b) => a.term - b.term);
+      // 此计算属性已经监听选择课程的改变
+      // 但也可单写watch监听
+      // 现在这个函数不能用
+      // courseSelects.value.sort((a, b) => a.term - b.term);
       return count;
     });
     return {
+      requiredPoint,
       courses,
-      sCoursesRef,
-      point,
-      requiredPoint
+      courseSelects,
+      point
     };
   }
 });
 </script>
-
 <style scoped>
 .course {
   border: 1px solid red;
