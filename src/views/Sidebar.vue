@@ -74,6 +74,31 @@
           Homework - 1
         </router-link>
       </li>
+      <li>
+        Vuex
+        <ul>
+          <li>
+            <router-link to="/example07-01">
+              state
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-02">
+              Mutations
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-03">
+              actions
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example07-04">
+              mapState & Getters
+            </router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>

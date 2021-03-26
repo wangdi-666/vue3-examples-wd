@@ -84,6 +84,26 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
     path: "/example06-03",
     component: () => import("@/views/example06/Example06-03.vue")
+  },
+  {
+    props: true,
+    path: "/example07-01",
+    component: () => import("@/views/example07/Example07-01.vue")
+  },
+  {
+    props: true,
+    path: "/example07-02",
+    component: () => import("@/views/example07/Example07-02.vue")
+  },
+  {
+    props: true,
+    path: "/example07-03",
+    component: () => import("@/views/example07/Example07-03.vue")
+  },
+  {
+    props: true,
+    path: "/example07-04",
+    component: () => import("@/views/example07/Example07-04.vue")
   }
 ];
 
