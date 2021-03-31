@@ -26,25 +26,23 @@
   </div>
 </template>
 <script lang="ts">
-import { listCourses, Course } from "@/datasource/homework01";
-import { computed, defineComponent, ref } from "vue";
+import { listCourses, Course } from "./homework01";
+import { defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
   setup() {
     const requiredPoint = 12;
+    const point = ref(0);
     const c2 = listCourses().sort((a, b) => a.term - b.term);
     const courses = ref<Course[]>(c2);
     const courseSelects = ref<Course[]>([]);
-    const point = computed(() => {
+    watch(courseSelects, () => {
       let count = 0;
       courseSelects.value.forEach(c => {
         count = count + c.point;
       });
-      // 此计算属性已经监听选择课程的改变
-      // 但也可单写watch监听
-      // 现在这个函数不能用
-      // courseSelects.value.sort((a, b) => a.term - b.term);
-      return count;
+      point.value = count;
+      courseSelects.value.sort((a, b) => a.term - b.term);
     });
     return {
       requiredPoint,
