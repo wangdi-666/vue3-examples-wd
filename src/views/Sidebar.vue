@@ -99,6 +99,21 @@
           </li>
         </ul>
       </li>
+      <li>
+        Passing Data to child component
+        <ul>
+          <li>
+            <router-link to="/example08-01">
+              Example
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example08-02">
+              Example - 2
+            </router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>
