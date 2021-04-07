@@ -3,15 +3,23 @@
     <sidebar id="sidebar" />
     <!-- 路由要跳转的地址 -->
     <router-view id="router" :key="$route.path" />
+    <alertdialog v-if="exception.length > 0" />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineAsyncComponent, defineComponent } from "vue";
 // 把Sidebar.vue的内部组件引到sidebar
 import sidebar from "@/views/Sidebar.vue";
+import { mapState } from "vuex";
+const alertdialog = defineAsyncComponent(() =>
+  import("@/components/AlertDialog.vue")
+);
 // 自己定义一个标签
 export default defineComponent({
-  components: { sidebar }
+  components: { sidebar, alertdialog },
+  computed: {
+    ...mapState(["exception"])
+  }
 });
 </script>
 
