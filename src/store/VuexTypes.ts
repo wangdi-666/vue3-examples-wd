@@ -7,3 +7,7 @@ export const UPDATE_EXCEPTION = "GET_EXCEPTION";
 
 // getters
 export const GETTER_PREMISSION = "GETTER_PREMISSION";
+
+// homework02
+export const LIST_SHOPS = "LIST_SHOPS";
+export const GET_SHOP = "GET_SHOP";

@@ -183,7 +183,31 @@ const routes: Array<RouteRecordRaw> = [
   {
     props: true,
     path: "/homework02",
-    component: () => import("@/views/homework02/Home.vue")
+    component: () => import("@/views/homework02/Home.vue"),
+    children: [
+      {
+        props: true,
+        path: "location",
+        component: () => import("@/views/homework02/Location.vue")
+      },
+      {
+        name: "foods",
+        props: true,
+        path: "foods",
+        component: () => import("@/views/homework02/Foods.vue")
+      },
+      {
+        name: "shops",
+        props: true,
+        path: "shops/:sid",
+        component: () => import("@/views/homework02/Shop.vue")
+      },
+      {
+        props: true,
+        path: "orders",
+        component: () => import("@/views/homework02/Order.vue")
+      }
+    ]
   }
 ];
 
