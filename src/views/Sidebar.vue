@@ -144,6 +144,31 @@
           </li>
         </ul>
       </li>
+      <li>
+        Nested Routes
+        <ul>
+          <li>
+            <router-link to="/example11-01">
+              Nested Routes
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        setup route
+        <ul>
+          <li>
+            <router-link to="/example12/students/12/homeworks/1">
+              sid:12; hid:1
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example12/students/74/homeworks/2">
+              sid:74; hid:2
+            </router-link>
+          </li>
+        </ul>
+      </li>
     </ul>
     <ul>
       <h1>Homework</h1>
