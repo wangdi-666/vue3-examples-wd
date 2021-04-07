@@ -114,6 +114,41 @@ const routes: Array<RouteRecordRaw> = [
     props: true,
     path: "/example08-02",
     component: () => import("@/views/example08/Example08-02.vue")
+  },
+  {
+    props: true,
+    path: "/example09-01",
+    component: () => import("@/views/example09/Example09-01.vue")
+  },
+  {
+    props: true,
+    path: "/example09-02",
+    component: () => import("@/views/example09/Example09-02.vue")
+  },
+  {
+    props: true,
+    path: "/example10-01",
+    component: () => import("@/views/example10/Example10-01.vue")
+  },
+  {
+    props: true,
+    path: "/example10-02",
+    component: () => import("@/views/example10/Example10-02.vue")
+  },
+  {
+    props: true,
+    path: "/example10-03",
+    component: () => import("@/views/example10/Example10-03.vue")
+  },
+  {
+    props: true,
+    path: "/homework01",
+    component: () => import("@/views/homework01/homework01.vue")
+  },
+  {
+    props: true,
+    path: "/homework02",
+    component: () => import("@/views/homework02/Home.vue")
   }
 ];
 

@@ -1,11 +1,14 @@
 import { createStore, MutationTree, ActionTree, GetterTree } from "vuex";
+import axios from "@/axios";
 import { Course, User } from "@/datasource/Types";
 import { listCourses } from "@/datasource/DataSource";
+import { ResultVO } from "@/mock";
 import * as vxt from "./VuexTypes";
 // 声明State类型的接口
 export interface State {
   user?: User;
   courses: Course[];
+  userCourses: Course[];
 }
 const myState: State = {
   user: {
@@ -13,12 +16,14 @@ const myState: State = {
     address: "956",
     level: 1
   },
-  courses: []
+  courses: [],
+  userCourses: []
 };
 // 通过store的commit()函数激活指定时间并发送数据
 const myMutations: MutationTree<State> = {
   [vxt.UPDATE_USER]: (state, data: User) => (state.user = data),
-  [vxt.LIST_COURSES]: (state, data: Course[]) => (state.courses = data)
+  [vxt.LIST_COURSES]: (state, data: Course[]) => (state.courses = data),
+  [vxt.LIST_USER_COURSES]: (state, data: Course[]) => (state.userCourses = data)
 };
 
 // 不用管第二个State，基于module模块时使用
@@ -30,6 +35,11 @@ const myActions: ActionTree<State, State> = {
   [vxt.LIST_COURSES]: ({ commit }) => {
     const courses = listCourses();
     setTimeout(() => commit(vxt.LIST_COURSES, courses), 2000);
+  },
+  // 10-01
+  [vxt.LIST_USER_COURSES]: async ({ commit }, userId: string) => {
+    const resp = await axios.get<ResultVO>(`users/${userId}/courses`);
+    commit(vxt.LIST_USER_COURSES, resp.data.data.courses);
   }
 };
 const myGetters: GetterTree<State, State> = {

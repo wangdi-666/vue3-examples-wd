@@ -114,6 +114,49 @@
           </li>
         </ul>
       </li>
+      <li>
+        axios
+        <ul>
+          <li>
+            <router-link to="/example09-01">
+              github
+            </router-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        mock
+        <ul>
+          <li>
+            <router-link to="/example10-01">
+              axios-mock-adapter
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example10-02">
+              axios & mock & vuex
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/example10-03">
+              Homework - 2
+            </router-link>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <h1>Homework</h1>
+      <li>
+        <router-link to="/homework01">
+          Homework - 1
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/homework02">
+          Homework - 2
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
