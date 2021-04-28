@@ -208,6 +208,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/homework02/Order.vue")
       }
     ]
+  },
+  {
+    //----------------- 前后端联调
+    props: true,
+    path: "/example13",
+    component: () => import("@/views/example13/Index.vue")
   }
 ];
 

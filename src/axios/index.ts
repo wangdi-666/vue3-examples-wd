@@ -5,10 +5,10 @@ import { UPDATE_EXCEPTION } from "@/store/VuexTypes";
 
 axios.interceptors.request.use(
   req => {
-    const auth = sessionStorage.getItem("authorization");
+    const auth = sessionStorage.getItem("token");
     // 判断,用于避免header包含authorization属性但数据值为空
     if (auth) {
-      req.headers.authorization = auth;
+      req.headers.token = auth;
     }
     return req;
   },

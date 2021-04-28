@@ -11,3 +11,8 @@ export const GETTER_PREMISSION = "GETTER_PREMISSION";
 // homework02
 export const LIST_SHOPS = "LIST_SHOPS";
 export const GET_SHOP = "GET_SHOP";
+
+// Integrating with backend
+export const BACKEND_WELCOME = "BACKEND_WELCOME";
+export const BACKEND_LOGIN = "BACKEND_LOGIN";
+export const BACKEND_COURSES = "BACKEND_COURSES";

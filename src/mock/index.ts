@@ -5,7 +5,9 @@ import MockAdapter from "axios-mock-adapter";
 
 const mock = new MockAdapter(axios);
 // 过滤http前缀请求
-mock.onGet(/^http/).passThrough();
+// mock.onGet(/^http/).passThrough();
+mock.onAny(/^http/).passThrough();
+mock.onAny(/^\/api\//).passThrough();
 
 // 地址，支持JS正则表达式
 // 正则表达式中 \，由转义符，\/，替代
@@ -64,7 +66,7 @@ mock.onPost("login").reply(c => {
       200,
       resulVO,
       {
-        authorization:
+        token:
           "744193c872b677aab12a0ced447882f4cf9fca92a09d428a26ed145ed2ed2eec665c8824ebc353042ba2be136efcb5c6"
       }
     ];

@@ -15,6 +15,8 @@ export interface State {
   shopList: Shop[];
   shopCache: Shop[];
   orders: Order[];
+  // Integrating with backend
+  isLogin: boolean;
 }
 const myState: State = {
   user: {
@@ -27,7 +29,8 @@ const myState: State = {
   exception: "",
   shopList: [],
   shopCache: [],
-  orders: []
+  orders: [],
+  isLogin: false
 };
 // 通过store的commit()函数激活指定时间并发送数据
 const myMutations: MutationTree<State> = {
@@ -86,6 +89,25 @@ const myActions: ActionTree<State, State> = {
       const shop = getShop(sid);
       shop && state.shopCache.push(shop);
     }, 1000);
+  },
+  //------- 前后端联调。
+  [vxt.BACKEND_WELCOME]: async () => {
+    const resp = await axios.get("/api/welcome");
+    // 将数据封装到promise返回给组件的方法
+    return Promise.resolve(resp.data.data);
+  },
+  [vxt.BACKEND_LOGIN]: async ({ state }, user: any) => {
+    const resp = await axios.post("/api/login", user);
+    const token: string = resp.headers.token;
+    if (token && token.length > 96) {
+      sessionStorage.setItem("token", token);
+      state.isLogin = true;
+    }
+  },
+  [vxt.BACKEND_COURSES]: async ({ state }) => {
+    const resp = await axios.get("/api/teacher/courses");
+    console.log(resp.data.data.courses);
+    state.courses = resp.data.data.courses;
   }
 };
 const myGetters: GetterTree<State, State> = {
@@ -93,6 +115,13 @@ const myGetters: GetterTree<State, State> = {
   [vxt.GETTER_PREMISSION]: state => (level: number) =>
     state.user?.level == level
 };
+
+// 加载vuex时，判断登录/角色等信息，加载初始化数据
+const token = sessionStorage.getItem("token");
+if (token && token.length > 96) {
+  myState.isLogin = true;
+}
+
 export default createStore({
   state: myState,
   mutations: myMutations,
